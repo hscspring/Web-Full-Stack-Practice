@@ -252,36 +252,38 @@ tree -L 2
 ├── Dockerfile_nginx				# 前端 Nginx 的 Dockerfile
 ├── Dockerfile_server				# 后端 Server 的 Dockerfile
 ├── backend.local.env				# 后端 Server 在 docker-compose.yml 中的环境变量
-├── demo_backend					# 后端项目目录
-│   ├── Pipfile						# 项目依赖管理文件
+├── demo_backend				# 后端项目目录
+│   ├── Pipfile					# 项目依赖管理文件
 │   ├── Pipfile.lock				# 同上，lock 文件
-│   ├── celery						# Celery 的配置文件，可以放在任何地方
+│   ├── celery					# Celery 的配置文件，可以放在任何地方
 │   ├── demo_backend				# 项目配置文件和入口
-│   ├── manage.py					# 本地开发入口文件
-│   ├── static						# 后端 admin 和 rest 静态文件
-│   ├── supervisor					# supervisor repo，build 时下载太慢，采用本地安装
+│   ├── manage.py				# 本地开发入口文件
+│   ├── static					# 后端 admin 和 rest 静态文件
+│   ├── supervisor				# supervisor repo，build 时下载太慢，采用本地安装
 │   ├── supervisord.conf			# Supervisor 正式环境配置文件
-│   ├── supervisord.local.conf		# Supervisor 开发环境配置文件
-│   ├── supervisord.log				# SUpervisor 运行时的 log 文件
+│   ├── supervisord.local.conf			# Supervisor 开发环境配置文件
+│   ├── supervisord.log				# Supervisor 运行时的 log 文件
 │   ├── text_generator				# 后端的 App，本例只有一个
-│   └── uwsgi.ini					# uWSGI 配置文件，用于正式环境
-├── demo_frontend					# 前端项目目录
-│   ├── build						# npm run build 后生成的静态文件
+│   └── uwsgi.ini				# uWSGI 配置文件，用于正式环境
+├── demo_frontend				# 前端项目目录
+│   ├── build					# npm run build 后生成的静态文件
 │   ├── config-overrides.js			# 覆盖配置 (本地 https) 使用的配置文件
 │   ├── node_modules				# node modules
 │   ├── package-lock.json			# package lock 文件
 │   ├── package.json				# package 依赖
-│   ├── public						# public 文件
-│   ├── src							# 前端源代码
-│   ├── ssl							# 域名 host ssl 证书相关文件
+│   ├── public					# public 文件
+│   ├── src					# 前端源代码
+│   ├── ssl					# 域名 host ssl 证书相关文件
 │   └── ssl.localhost				# localhost ssl 证书相关文件
 ├── docker-compose.yml				# docker-compose 配置文件
 ├── frontend.local.env				# 前端开发在 docker-compose.yml 中的环境变量
-├── nginx.conf						# nginx 默认配置文件
-└── nginx.proj.conf					# nginx 项目配置文件
+├── nginx.conf					# nginx 默认配置文件
+└── nginx.proj.conf				# nginx 项目配置文件
 ```
 
 > 后端的 supervisor 和 celery 文件夹以及前端的 ssl 和 ssl.localhost 理论上是可以放在其他地方的，放在这些位置只是方便开发。
+>
+> 很多文件或文件夹是可以 ignore 的，比如前端的 build，后端的 supervisord.log 以及模型文件等，不过为了更加方便大家查看就都推上去了。
 
 这样我们就把前后端用 docker 完全地整合在一起，在全栈开发时可以前后端同时开发调试，正式上线时也可以快速完成部署。
 
