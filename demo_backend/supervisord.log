@@ -1,0 +1,104 @@
+2019-03-03 23:51:14,806 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-03 23:51:14,819 INFO supervisord started with pid 1
+2019-03-03 23:51:15,824 INFO spawned: 'celery' with pid 8
+2019-03-03 23:51:15,831 INFO spawned: 'django' with pid 9
+2019-03-03 23:51:16,835 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-03 23:51:16,837 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-03 23:57:44,737 WARN received SIGTERM indicating exit request
+2019-03-03 23:57:44,740 INFO waiting for celery, django to die
+2019-03-03 23:57:44,896 INFO stopped: django (exit status 0)
+2019-03-03 23:57:47,782 INFO stopped: celery (exit status 1)
+2019-03-04 09:54:06,225 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 09:54:06,255 INFO supervisord started with pid 1
+2019-03-04 09:54:07,265 INFO spawned: 'celery' with pid 8
+2019-03-04 09:54:07,279 INFO spawned: 'django' with pid 9
+2019-03-04 09:54:08,288 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 09:54:08,289 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 09:56:18,555 WARN received SIGTERM indicating exit request
+2019-03-04 09:56:18,563 INFO waiting for celery, django to die
+2019-03-04 09:56:19,575 INFO stopped: django (exit status 0)
+2019-03-04 09:56:22,141 INFO waiting for celery to die
+2019-03-04 09:56:23,588 INFO stopped: celery (exit status 1)
+2019-03-04 10:09:11,508 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 10:09:11,529 INFO supervisord started with pid 1
+2019-03-04 10:09:12,540 INFO spawned: 'celery' with pid 9
+2019-03-04 10:09:12,555 INFO spawned: 'django' with pid 10
+2019-03-04 10:09:13,559 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 10:09:13,561 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 10:10:41,737 WARN received SIGTERM indicating exit request
+2019-03-04 10:10:41,746 INFO waiting for celery, django to die
+2019-03-04 10:10:45,432 INFO stopped: django (exit status 0)
+2019-03-04 10:10:45,435 INFO waiting for celery to die
+2019-03-04 10:10:48,183 INFO stopped: celery (exit status 1)
+2019-03-04 12:55:39,184 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 12:55:39,205 INFO supervisord started with pid 1
+2019-03-04 12:55:40,210 INFO spawned: 'celery' with pid 9
+2019-03-04 12:55:40,215 INFO spawned: 'django' with pid 10
+2019-03-04 12:55:41,222 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 12:55:41,232 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 13:00:10,074 WARN received SIGTERM indicating exit request
+2019-03-04 13:00:10,085 INFO waiting for celery, django to die
+2019-03-04 13:00:11,411 INFO stopped: django (exit status 0)
+2019-03-04 13:00:13,421 INFO waiting for celery to die
+2019-03-04 13:00:16,492 INFO stopped: celery (exit status 1)
+2019-03-04 14:04:23,044 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 14:04:23,055 INFO supervisord started with pid 1
+2019-03-04 14:04:24,029 INFO spawned: 'celery' with pid 8
+2019-03-04 14:04:24,038 INFO spawned: 'django' with pid 9
+2019-03-04 14:04:25,058 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 14:04:25,060 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 15:52:54,193 WARN received SIGTERM indicating exit request
+2019-03-04 15:52:54,209 INFO waiting for celery, django to die
+2019-03-04 15:52:55,127 INFO stopped: django (exit status 0)
+2019-03-04 15:52:57,488 INFO waiting for celery to die
+2019-03-04 15:52:58,848 INFO stopped: celery (exit status 1)
+2019-03-04 15:59:48,373 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 15:59:48,391 INFO supervisord started with pid 1
+2019-03-04 15:59:49,399 INFO spawned: 'celery' with pid 8
+2019-03-04 15:59:49,409 INFO spawned: 'django' with pid 9
+2019-03-04 15:59:50,436 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 15:59:50,458 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:01:00,364 WARN received SIGTERM indicating exit request
+2019-03-04 16:01:00,369 INFO waiting for celery, django to die
+2019-03-04 16:01:00,572 INFO stopped: django (exit status 0)
+2019-03-04 16:01:02,456 INFO stopped: celery (exit status 1)
+2019-03-04 16:05:04,775 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 16:05:04,792 INFO supervisord started with pid 1
+2019-03-04 16:05:05,797 INFO spawned: 'celery' with pid 9
+2019-03-04 16:05:05,802 INFO spawned: 'django' with pid 10
+2019-03-04 16:05:06,806 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:05:06,808 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:07:34,258 WARN received SIGTERM indicating exit request
+2019-03-04 16:07:34,274 INFO waiting for celery, django to die
+2019-03-04 16:07:35,477 INFO stopped: django (exit status 0)
+2019-03-04 16:07:37,428 INFO stopped: celery (exit status 1)
+2019-03-04 16:07:45,876 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 16:07:45,901 INFO supervisord started with pid 1
+2019-03-04 16:07:46,874 INFO spawned: 'celery' with pid 10
+2019-03-04 16:07:47,031 INFO spawned: 'django' with pid 11
+2019-03-04 16:07:48,036 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:07:48,039 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:10:59,003 WARN received SIGTERM indicating exit request
+2019-03-04 16:10:59,007 INFO waiting for celery, django to die
+2019-03-04 16:10:59,201 INFO stopped: django (exit status 0)
+2019-03-04 16:11:01,140 INFO stopped: celery (exit status 1)
+2019-03-04 16:14:30,331 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 16:14:30,342 INFO supervisord started with pid 1
+2019-03-04 16:14:31,348 INFO spawned: 'celery' with pid 9
+2019-03-04 16:14:31,563 INFO spawned: 'django' with pid 10
+2019-03-04 16:14:32,568 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:14:32,570 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:16:41,202 WARN received SIGTERM indicating exit request
+2019-03-04 16:16:41,205 INFO waiting for celery, django to die
+2019-03-04 16:16:42,354 INFO stopped: django (exit status 0)
+2019-03-04 16:16:44,274 INFO stopped: celery (exit status 1)
+2019-03-04 16:27:59,627 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-03-04 16:27:59,652 INFO supervisord started with pid 1
+2019-03-04 16:28:00,657 INFO spawned: 'celery' with pid 8
+2019-03-04 16:28:00,673 INFO spawned: 'django' with pid 9
+2019-03-04 16:28:01,692 INFO success: celery entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:28:01,698 INFO success: django entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-03-04 16:30:47,596 WARN received SIGTERM indicating exit request
+2019-03-04 16:30:47,599 INFO waiting for celery, django to die
+2019-03-04 16:30:47,750 INFO stopped: django (exit status 0)
+2019-03-04 16:30:50,655 INFO stopped: celery (exit status 1)
