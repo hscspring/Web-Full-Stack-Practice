@@ -13,7 +13,7 @@
 
 作为一名 NLP 算法工程师，我们决定做一个简单的 Language Model 的 Demo，前端用户输入一个词，返回一段自动生成的文本。
 
-模型训练参考：[递归神经网络  |  TensorFlow](https://www.tensorflow.org/tutorials/sequences/recurrent#language_modeling)，使用张爱玲作品集的句子作为训练集，800 个句子，52750 字，跑了 150 个 epoch。
+模型参考：[递归神经网络  |  TensorFlow](https://www.tensorflow.org/tutorials/sequences/recurrent#language_modeling)，使用张爱玲作品集的句子作为训练集，800 个句子，52750 字，跑了 150 个 epoch。
 
 ## 后端
 
@@ -113,7 +113,7 @@ python manage.py startapp text_generator
 
 运行 `docker-compose build app` 单独 build app，build 完成后可以通过 `docker-compose up db redis app` 来启动 db、redis 和后端服务，`docker-compose stop` 停止服务。需要注意的是：
 
-- app.backend.env 中的 db host 和 redis host 都需要改为 192.168.65.2，这是 docker 服务的默认地址，否则无法连接到 db 和 redis。db host 也可以直接使用 `docker-compose.yml` 中 db 的 name（如本例中是：db）。
+- backend.local.env 中的 db host 和 redis host 都需要改为 192.168.65.2，这是 docker 服务的默认地址，否则无法连接到 db 和 redis。db host 也可以直接使用 `docker-compose.yml` 中 db 的 name（如本例中是：db）。
 - 本地开发时，需要把整个项目目录映射出去。但在测试正式环境时不需要（注释掉 `docker-compose.yml line 29`），因为映射后容器里面目录的内容会被清空，以映射出来的目录为准了，而我们本地并没有设置 Celery 的 deamon；而且 uWSGI 也可能会报错，因为我们没有设置虚拟环境的目录。
 - 本地开发时，command 要写成本地的 Supervisor 配置文件以替换 Docker 里面的正式配置文件。但在测试正式环境时要记得注释掉（`docker-compose.yml line 40`）。
 - 容器启动后，需要通过 `docker exec -it app bash`（app 可以替换为 container id）进入后端容器内部执行系列命令，包括：
