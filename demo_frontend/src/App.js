@@ -6,8 +6,10 @@ import axios from 'axios';
 import './App.css';
 
 const Search = Input.Search;
-
-const generateUrl = "http://127.0.0.1:8000/api/generate/";
+// 本地开发时用
+// const generateUrl = "http://127.0.0.1:8000/api/generate/";
+// 正式部署时用
+const generateUrl = "https://naivegenerator.com/api/generate/";
 
 const TextDisplay = props => {
     const {text} = props;

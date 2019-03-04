@@ -2,6 +2,12 @@
 
 本项目主要介绍基于 Docker 的 Web 开发和部署（开发要求在改动代码时服务或页面能够实时发生变化）全流程，来源于日常项目，后端以 Django 为例，前端以 React 为例，使用到的其他模块也可以换成同类产品，比如 uWSGI 可以换成 Gunicorn，数据库可以换成 Mysql 等。我们将通过一个案例前后端分离介绍，这样容易理解。
 
+## 目标
+
+- docker-compose 启动前后端同时开发
+- 本地开发 + 正式部署 Https
+- Supervisor + uWSGI + Nginx 部署
+
 ## 环境
 
 - MacOS Mojave 10.14
