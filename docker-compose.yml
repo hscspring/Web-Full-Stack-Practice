@@ -16,6 +16,8 @@ services:
     app:
         container_name: app
         build:
+            # context 是 Dockerfile 的根目录，这里就是 docker-compose.yml 所在的目录
+            # 注意：值是个 点
             context: .
             dockerfile: Dockerfile_server
         image:
@@ -38,7 +40,7 @@ services:
         # 本地需要，正式环境不需要，Dockerfile 中已经运行
         # 此 command 会替换 Dockerfile 中的 supervisord.conf
         #!!!==== 测试正式环境时记得注释掉 ====#
-        # command: supervisord.local.conf # uncomment to use supervisord.conf
+        # command: supervisord.local.conf # comment to use supervisord.conf
         depends_on:
             - db
             - redis
@@ -68,12 +70,13 @@ services:
             args:
                 backend_host: 192.168.65.2:8000 # in prod we need to use 127; local use 192.168.65.2
         image:
-            naivegenerator-nginx:local
+            naivegenerator-nginx:local # modify tag `local` to vx.x.x when build prod image
         restart: always
         ports:
             - "443:443"
         volumes:
             - ~/docker_volume/log/nginx:/var/log/nginx
+            # 后端给共享的静态文件
             - app_static:/demo-backend/static
         depends_on:
             - app
