@@ -295,6 +295,36 @@ tree -L 2
 
 这样我们就把前后端用 docker 完全地整合在一起，在全栈开发时可以前后端同时开发调试，正式上线时也可以快速完成部署。
 
+另外，把映射的日志文件目录也放在这里：
+
+```bash
+cd ~/docker_volume/log
+tree -L 2
+.
+├── celery
+│   ├── err.log
+│   ├── out.log
+│   ├── worker1-1.log
+│   ├── worker1-2.log
+│   ├── worker1-3.log
+│   ├── worker1-4.log
+│   ├── worker1-5.log
+│   ├── worker1-6.log
+│   ├── worker1-7.log
+│   ├── worker1-8.log
+│   └── worker1.log
+├── nginx
+│   ├── access.log
+│   ├── demo.access.log
+│   ├── demo.error.log
+│   └── error.log
+└── uwsgi
+    ├── err.log
+    └── out.log
+```
+
+分别是 celery、uwsgi 和 nginx 的日志文件，nginx 的 `demo.*` 就是我们针对项目做得配置，celery 的 `err.log` 和 `out.log` 是我们在 Supervisor 中做得配置，其余的则是 celery 的 conf 文件做得配置（`celeryd.conf` line 24：`CELERYD_OPTS="--time-limit=300 --concurrency=8"`）。建议把一个项目的日志放（或映射）在一个地方，无论是本地开发还是正式部署。
+
 ## 参考文献和资源
 
 以下主要罗列使用过的参考文献和一些还不错的资源，简单的归了下类，大家按需取用。
