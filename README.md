@@ -105,9 +105,9 @@ python manage.py startapp text_generator
 
 ### Step4: uWSGI
 
-按照配置文件配置，需要注意的是，这里不用配置 daemon。可以设置 server 为：`socket=app.sock` 或直接使用 http。
+按照配置文件配置，需要注意的是，这里**不用配置 daemon**。可以设置 server 为：`socket=app.sock` 或直接使用 http。
 
-需要注意的是，这个是在正式环境下使用的，如果在本地开发环境，直接用 `python manage.py runserver 0.0.0.0:8000` 启动服务即可。另外，不需要设置 daemon。
+需要注意的是，这个是在正式环境下使用的，如果在本地开发环境，直接用 `python manage.py runserver 0.0.0.0:8000` 启动服务即可。
 
 ### Step5: Supervisor
 
