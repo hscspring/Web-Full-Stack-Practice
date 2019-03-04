@@ -30,7 +30,7 @@
 
 首先把 db 设置好，如果这里需要用到 redis 也需要一并设置。
 
-我们可以使用 `docker-compose up db` 只启动 db，然后在本地登陆 db 去创建用户，当然本地也可以直接使用 postgres 作为用户。**需要注意的是：host 地址是本机的 IP 地址**，Mac 可以使用 `ifconfig` 查看。
+我们可以使用 `docker-compose up db`（在 `docker-compose.yml` 所在目录执行）只启动 db，然后在本地登陆 db 去创建用户，当然本地也可以直接使用 postgres 作为用户。**需要注意的是：host 地址是本机的 IP 地址**，Mac 可以使用 `ifconfig` 查看。
 
 `psql -h 192.168.0.103 -U postgres`，密码就是启动时创建的超级用户的密码。
 
@@ -111,7 +111,7 @@ python manage.py startapp text_generator
 
 接下来就是编写 Dockerfile 了，我们可以用一个 Dockerfile 同时满足本地开发和正式部署，主要通过 supervisor 不同的配置文件来实现，本地开发时还需要把整个目录映射出去，这样当文件内容发生变化时，服务会自动刷新。
 
-运行 `docker-compose build app` 单独 build app，build 完成后可以通过 `docker-compose up db redis app` 来启动 db、redis 和后端服务，需要注意的是：
+运行 `docker-compose build app` 单独 build app，build 完成后可以通过 `docker-compose up db redis app` 来启动 db、redis 和后端服务，`docker-compose stop` 停止服务。需要注意的是：
 
 - app.backend.env 中的 db host 和 redis host 都需要改为 192.168.65.2，这是 docker 服务的默认地址，否则无法连接到 db 和 redis。db host 也可以直接使用 `docker-compose.yml` 中 db 的 name（如本例中是：db）。
 - 本地开发时，需要把整个项目目录映射出去。但在测试正式环境时不需要（注释掉 `docker-compose.yml line 29`），因为映射后容器里面目录的内容会被清空，以映射出来的目录为准了，而我们本地并没有设置 Celery 的 deamon；而且 uWSGI 也可能会报错，因为我们没有设置虚拟环境的目录。
@@ -233,7 +233,7 @@ rest 网址：`https://naivegenerator.com/api`， 如图所示：
 
 ## 注意事项
 
-- 由于本例把所有操作整合在一起了，有些童鞋如果想要了解每一步的细节，可以在本地把环境设置好，使用 docker-compose 单独 up 启动 db 和 redis，然后在本地操作后端交互。
+- 由于本例把所有操作整合在一起了，有些童鞋如果想要了解每一步的细节，可以在本地把环境设置好，使用 docker-compose 单独 up 启动 db 和 redis，然后在本地操作后端交互。无论是 up 还是 stop，都须在 `docker-compose.yml` 所在目录执行。
 - docker-compose 中 build 之外的字段对 build 没有影响，build 主要受 Dockerfile 的影响；Dockerfile 如果名字不是 `Dockerfile` 需要指定文件名。
 - 本例把 `backend.local.env` 和 `frontend.local.env` 一起上传了，但在正式项目中，大家务必把 `*.env` 添加到 `.gitignore` 中，这样信息就不会泄露了。
 - 本例使用了 Celery 但后端代码并没有写成异步；同样使用了 Redis 但并未用在后端服务，而是用作了 Celery 的 Broker。
