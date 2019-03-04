@@ -239,6 +239,8 @@ rest 网址：`https://naivegenerator.com/api`， 如图所示：
 
 ## 注意事项
 
+- 如果 `docker-compose stop` 后还想把生成的 container 也删掉（因为各种报错我们可能会不停地 build，有时候之前的需要彻底删除），可以使用这个命令：`docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker volume rm $(docker volume ls -qf dangling=true)`
+
 - 由于本例把所有操作整合在一起了，有些童鞋如果想要了解每一步的细节，可以在本地把环境设置好，使用 docker-compose 单独 up 启动 db 和 redis，然后在本地操作后端交互。无论是 up 还是 stop，都须在 `docker-compose.yml` 所在目录执行。
 - docker-compose 中 build 之外的字段对 build 没有影响，build 主要受 Dockerfile 的影响；Dockerfile 如果名字不是 `Dockerfile` 需要指定文件名。
 - 本例把 `backend.local.env` 和 `frontend.local.env` 一起上传了，但在正式项目中，大家务必把 `*.env` 添加到 `.gitignore` 中，这样信息就不会泄露了。
