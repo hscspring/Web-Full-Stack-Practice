@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# frontend
+demo_frontend/node_modules/
+
