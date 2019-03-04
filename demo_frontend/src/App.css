@@ -1,0 +1,32 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+
+.flex-container {
+    padding: 5;
+    margin: 0;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.App-generate {
+  margin-top: 20%;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.App-text {
+  margin-top: 1%;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+#components-form-demo-validate-other.dropbox {
+      height: 180px;
+      line-height: 1.5;
+    }
