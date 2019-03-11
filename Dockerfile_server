@@ -22,7 +22,10 @@ RUN pip install pipenv -i https://pypi.douban.com/simple
 RUN pipenv install --system --deploy
 # 下载太慢，直接用本地安装
 # RUN pip install git+https://github.com/Supervisor/supervisor
-RUN pip install git+file:///demo-backend/supervisor
+# RUN pip install --no-index --find-links file:///demo-backend/supervisor
+RUN pip install $PROJECT_DIR/supervisor-master.zip
+
+
 
 WORKDIR $PROJECT_DIR
 

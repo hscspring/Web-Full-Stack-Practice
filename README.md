@@ -105,11 +105,15 @@ python manage.py startapp text_generator
 
 ### Step4: uWSGI
 
-按照配置文件配置，需要注意的是，这里**不用配置 daemon**。可以设置 server 为：`socket=app.sock` 或直接使用 http。
+按照配置文件配置，需要注意的是，这里**不用配置 daemon**。可以设置 server 为：`socket=app.sock` 或直接使用 http（docker 中不能使用 `app.sock`，因为文件不在一个容器内）。
 
 需要注意的是，这个是在正式环境下使用的，如果在本地开发环境，直接用 `python manage.py runserver 0.0.0.0:8000` 启动服务即可。
 
-相关参数详细说明可以参考：[How to use Django with uWSGI | Django documentation | Django](https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/uwsgi/) 以及 [Things to know (best practices and “issues”) READ IT !!! — uWSGI 2.0 documentation](https://uwsgi-docs.readthedocs.io/en/latest/ThingsToKnow.html)
+相关参数详细说明可以参考：
+
+- [How to use Django with uWSGI | Django documentation | Django](https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/uwsgi/) 
+-  [Things to know (best practices and “issues”) READ IT !!! — uWSGI 2.0 documentation](https://uwsgi-docs.readthedocs.io/en/latest/ThingsToKnow.html)
+- [How to create a Django server running uWSGI, NGINX and PostgreSQL on AWS EC2 with Python 3.6](https://medium.freecodecamp.org/django-uwsgi-nginx-postgresql-setup-on-aws-ec2-ubuntu16-04-with-python-3-6-6c58698ae9d3)
 
 ### Step5: Supervisor
 
@@ -321,11 +325,14 @@ tree -L 2
 │   ├── demo.error.log
 │   └── error.log
 └── uwsgi
+	├── demo.uwsgi.log
     ├── err.log
     └── out.log
 ```
 
 分别是 celery、uwsgi 和 nginx 的日志文件，nginx 的 `demo.*` 就是我们针对项目做得配置，celery 的 `err.log` 和 `out.log` 是我们在 Supervisor 中做得配置，其余的则是 celery 的 conf 文件做得配置（`celeryd.conf` line 24：`CELERYD_OPTS="--time-limit=300 --concurrency=8"`）。建议把一个项目的日志放（或映射）在一个地方，无论是本地开发还是正式部署。
+
+> 有些 log 是没必要的，比如 uwsgi，如果配置本身设置了的话，supervisor 那里可以不用设置。
 
 ## 参考文献和资源
 
