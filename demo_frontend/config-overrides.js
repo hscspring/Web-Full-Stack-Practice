@@ -50,3 +50,18 @@ module.exports = {
         return paths;
     },
 }
+
+
+// module.exports = {
+//     devServer: configFn => {
+//         return (proxy, allowedHost) => {
+//             const config = configFn(proxy, allowedHost);
+//             config.host = 'myhost.com';
+
+//             return config;
+//         }
+//     }
+// };
+
+
+

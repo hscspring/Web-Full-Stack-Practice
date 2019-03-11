@@ -38,7 +38,7 @@
 
 我们可以使用 `docker-compose up db`（在 `docker-compose.yml` 所在目录执行）只启动 db，然后在本地登陆 db 去创建用户，当然本地也可以直接使用 postgres 作为用户。**需要注意的是：host 地址是本机的 IP 地址**，Mac 可以使用 `ifconfig` 查看。
 
-`psql -h 192.168.0.103 -U postgres`，密码就是启动时创建的超级用户的密码。
+`psql -h 192.168.0.103 -U postgres`，密码就是启动时创建的超级用户的密码，登陆后最好是更改一下 postgres 的密码，因为环境变量的那个只是启动时用一下。
 
 ```sql
 # create user
@@ -108,6 +108,8 @@ python manage.py startapp text_generator
 按照配置文件配置，需要注意的是，这里**不用配置 daemon**。可以设置 server 为：`socket=app.sock` 或直接使用 http。
 
 需要注意的是，这个是在正式环境下使用的，如果在本地开发环境，直接用 `python manage.py runserver 0.0.0.0:8000` 启动服务即可。
+
+相关参数详细说明可以参考：[How to use Django with uWSGI | Django documentation | Django](https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/uwsgi/)
 
 ### Step5: Supervisor
 

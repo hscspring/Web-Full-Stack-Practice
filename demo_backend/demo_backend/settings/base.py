@@ -42,6 +42,7 @@ REDIS = os.environ.get('REDIS')
 
 # Celery settings
 CELERY_BROKER_URL = REDIS
+# 使用 django 的 db 和 cache
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_CACHE_BACKEND = 'django-cache'
 CELERY_ACCEPT_CONTENT = ['json']
