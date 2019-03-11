@@ -125,7 +125,7 @@ python manage.py startapp text_generator
 
 运行 `docker-compose build app` 单独 build app，build 完成后可以通过 `docker-compose up db redis app` 来启动 db、redis 和后端服务，`docker-compose stop` 停止服务。需要注意的是：
 
-- backend.local.env 中的 db host 和 redis host 都需要改为 192.168.65.2，这是 docker 服务的默认地址，否则无法连接到 db 和 redis。db host 也可以直接使用 `docker-compose.yml` 中 db 的 name（如本例中是：db）。
+- `backend.local.env` 中的 db host 和 redis host 都需要改为 192.168.65.2，这是 docker 服务的默认地址，否则无法连接到 db 和 redis。db host 也可以直接使用 `docker-compose.yml` 中 db 的 name（如本例中是：db）。
 - 本地开发时，需要把整个项目目录映射出去。但在测试正式环境时不需要（注释掉 `docker-compose.yml line 29`），因为映射后容器里面目录的内容会被清空，以映射出来的目录为准了，而我们本地并没有设置 Celery 的 deamon；而且 uWSGI 也可能会报错，因为我们没有设置虚拟环境的目录。
 - 本地开发时，command 要写成本地的 Supervisor 配置文件以替换 Docker 里面的正式配置文件。但在测试正式环境时要记得注释掉（`docker-compose.yml line 40`）。
 - 容器启动后，需要通过 `docker exec -it app bash`（app 可以替换为 container id）进入后端容器内部执行系列命令，包括：
@@ -217,7 +217,7 @@ server
 
 使用配置 1 时，请求 `http://www.naivegenerator.com/api/generate/` 时会被成功转到：`http://127.0.0.1:8000/api/generate/`，而使用配置 2 时，则会被转到：`http://127.0.0.1:8000/generate/`。请求静态文件也是一样，所以这里需要稍微注意下。
 
-然后是编写 Dockerfile，这里面有四个地方要强调一下：
+然后是编写 Dockerfile（最好创建并编写一下 `.dockerignore` 将 node modules 忽略掉），这里面有四个地方要强调一下：
 
 - 正式部署时，一般需要先在服务器上放一个验证文件，能点击下载后才能获得 `server.key` 和 `server.crt`，比如 [SSL For Free - Free SSL Certificates in Minutes](https://www.sslforfree.com/)，但我们本地因为是自己电脑给的证书，所以这一步不需要。当然如果你采用其他的证书授予商，也可能有不同的要求。除了上面那个免费的 SSl 外，还有很多，大家可以上网搜一搜，比如：[Getting Started - Let's Encrypt - Free SSL/TLS Certificates](https://letsencrypt.org/getting-started/)。
 - 关于 ARG 和 ENV 详细情况大家可以看一下官网，build image 时可以使用 arg。本例中，我们使用 `ENV BACKEND_HOST=${backend_host}` 设置了一个环境变量，变量值从 docker-compose 中 nginx build 的 arg 中取变量名为 `{backend_host}` 的变量，然后将该环境变量传入配置文件，让其生效。这么做的目的主要是因为本地 docker-compose up 后 Nginx 访问后端服务需要使用 `192.168.65.2`，而不是 `127.0.0.1`，正式部署时在 k8s 上可以使用后者。

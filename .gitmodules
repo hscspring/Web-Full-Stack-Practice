@@ -1,3 +1,0 @@
-[submodule "demo_backend/supervisor"]
-	path = demo_backend/supervisor
-	url = git@github.com:Supervisor/supervisor.git
