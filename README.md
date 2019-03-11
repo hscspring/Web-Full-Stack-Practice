@@ -109,7 +109,7 @@ python manage.py startapp text_generator
 
 需要注意的是，这个是在正式环境下使用的，如果在本地开发环境，直接用 `python manage.py runserver 0.0.0.0:8000` 启动服务即可。
 
-相关参数详细说明可以参考：[How to use Django with uWSGI | Django documentation | Django](https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/uwsgi/)
+相关参数详细说明可以参考：[How to use Django with uWSGI | Django documentation | Django](https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/uwsgi/) 以及 [Things to know (best practices and “issues”) READ IT !!! — uWSGI 2.0 documentation](https://uwsgi-docs.readthedocs.io/en/latest/ThingsToKnow.html)
 
 ### Step5: Supervisor
 
