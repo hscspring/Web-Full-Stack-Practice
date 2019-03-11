@@ -21,7 +21,7 @@ services:
             context: .
             dockerfile: Dockerfile_server
         image:
-            naivegenerator-app:v0.0.1
+            naivegenerator-app:vlocal
         restart: always
         ports:
             - "8000:8000"
@@ -50,6 +50,8 @@ services:
         build:
             context: .
             dockerfile: Dockerfile_local
+        image:
+            naivegenerator-web:local
         restart: always
         ports:
             - "3000:3000"
