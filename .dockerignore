@@ -1,0 +1,22 @@
+# Yam
+
+# hidden files
+**/*.DS_Store
+**/*.cache
+env
+protos
+
+# python
+**/*__pycache__
+**/*spellcheck.egg-info
+**/*.ipynb*
+**/*.pyc
+
+# tests
+tests
+
+# dictionary data
+*/data-v*
+*/*.pkl
+
+*/node_modules*
