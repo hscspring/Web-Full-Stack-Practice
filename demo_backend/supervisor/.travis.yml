@@ -1,0 +1,39 @@
+language: python
+
+matrix:
+    include:
+        - python: 2.7
+          env: TOXENV=cover
+        - python: 3.7
+          env: TOXENV=cover3
+          dist: xenial    # required for Python 3.7 (travis-ci/travis-ci#9069)
+        - python: 3.7
+          env: TOXENV=docs
+          dist: xenial    # required for Python 3.7 (travis-ci/travis-ci#9069)
+        - python: 2.7
+          env:
+            - TOXENV=py27
+            - END_TO_END=1
+        - python: 3.4
+          env:
+            - TOXENV=py34
+            - END_TO_END=1
+        - python: 3.5
+          env:
+            - TOXENV=py35
+            - END_TO_END=1
+        - python: 3.6
+          env:
+            - TOXENV=py36
+            - END_TO_END=1
+        - python: 3.7
+          env:
+            - TOXENV=py37
+            - END_TO_END=1
+          dist: xenial    # required for Python 3.7 (travis-ci/travis-ci#9069)
+
+install:
+    - travis_retry pip install virtualenv tox pexpect
+
+script:
+    - travis_retry tox
