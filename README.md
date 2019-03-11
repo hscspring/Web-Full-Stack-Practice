@@ -273,7 +273,7 @@ tree -L 2
 │   ├── demo_backend				# 项目配置文件和入口
 │   ├── manage.py				# 本地开发入口文件
 │   ├── static					# 后端 admin 和 rest 静态文件
-│   ├── supervisor				# supervisor repo，build 时下载太慢，采用本地安装
+│   ├── supervisor-master.zip				# supervisor repo，build 时下载太慢，采用本地安装
 │   ├── supervisord.conf			# Supervisor 正式环境配置文件
 │   ├── supervisord.local.conf			# Supervisor 开发环境配置文件
 │   ├── supervisord.log				# Supervisor 运行时的 log 文件
