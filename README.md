@@ -325,7 +325,7 @@ tree -L 2
 │   ├── demo.error.log
 │   └── error.log
 └── uwsgi
-	├── demo.uwsgi.log
+    ├── demo.uwsgi.log
     ├── err.log
     └── out.log
 ```
