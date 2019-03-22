@@ -133,7 +133,7 @@ python manage.py startapp text_generator
     - `python manage.py migrate` 将生成的数据 migrate 到 db
     - `python manage.py createsuperuser` 可以创建管理后台的管理员
     - `python manage.py collectstatic ` 自动输出静态文件到项目根目录
-- 本地开发时，log 会直接输出到屏幕。但在测试正式环境时，日志会映射出来到映射的目录（如本例的 `~/docker_volume/log/`），日志文件无法实时查看，`docker-compose stop` 后可以查看。
+- 本地开发时，log 会直接输出到屏幕。但在测试正式环境时，日志会映射出来到映射的目录（如本例的 `~/docker_volume/log/`），可以直接通过目录文件查看。
 
 到这一步，后端部分就已经完成了，我们可以通过 http://127.0.0.1:8000/admin/ 登陆管理员，也可以通过 http://127.0.0.1:8000/api/ 查看 Rest Framework，或者通过调用 http://127.0.0.1:8000/api/generate/ 生成。后端代码修改后，服务会自动刷新。
 
