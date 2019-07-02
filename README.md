@@ -9,6 +9,8 @@
 - Supervisor + uWSGI + Nginx 部署
 
 > 特别说明：在前后端联合调试时比较方便，如果单个开发后端或前端，直接本地很多时候会更方便。
+>
+> 关于本地 Https，很多框架本来就是支持的，就不要像本文这么麻烦了。
 
 ## 环境
 
@@ -225,10 +227,15 @@ server
 - 关于 ARG 和 ENV 详细情况大家可以看一下官网，build image 时可以使用 arg。本例中，我们使用 `ENV BACKEND_HOST=${backend_host}` 设置了一个环境变量，变量值从 docker-compose 中 nginx build 的 arg 中取变量名为 `{backend_host}` 的变量，然后将该环境变量传入配置文件，让其生效。这么做的目的主要是因为本地 docker-compose up 后 Nginx 访问后端服务需要使用 `192.168.65.2`，而不是 `127.0.0.1`，正式部署时在 k8s 上可以使用后者。
 - 前端的静态文件在运行 `npm run build` 后会自动生成 build 文件夹，我们在 `nginx.proj.conf` 中将其设置为主页的根目录；后端（admin 和 rest）的静态文件则需要后端用 `python manage.py collectstatic` 收集后在 Dockerfile 中复制到前端某个地址。需要说明的是，因为我们将这个 static 目录共享了，所以虽然我们把本地目录整个映射出去了，但登陆 app 容器运行上面的命令后本地依然看不到 static 下的文件。因为 docker 会自动创建一个 volume（只要运行 `docker volume ls` 就看到了），文件就在这共享的 volume 里（本例中位 demo_app_static）。那怎么办呢？有三种办法：
     - 注释掉共享的目录，重新启动运行；
+    
     - 本地生成；
+    
     - 找到文件的实际位置然后复制出来，关于 volume 的详细情况可以通过 `docker volume inspect demo_app_static` 查看，运行 `screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty` 然后进入 inspect 的目录就可以看到了。注意需要运行一个 docker 才能复制，步骤如下:
+    
         - `docker run -it --rm -v volume_name:/home_or_other_dir  container /bin/bash`
         - `docker cp container_name:/home_or_other_dir /your_local_path`
+    
+        因为这里的 volume 并没有在你 `docker-compose up` 起来的容器里，所以我们需要先将它映射到一个容器里再复制。
 - 关于 Dockerfile 中 ENV 替换到 nginx 配置文件需要特别注意，可以参考这里：[configuration - nginx 'invalid number of arguments in "map" directive' - Stack Overflow](https://stackoverflow.com/questions/39968344/nginx-invalid-number-of-arguments-in-map-directive)
 
 最后别忘了修改 host：`sudo vim /etc/hosts`，添加一行：`127.0.0.1 naivegenerator.com`，这样当我们访问 `naivegenerator.com` 时等于是访问了 `127.0.0.1`。
